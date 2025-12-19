@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BBQ Ordering System (Kiosk)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="logo">BBQ</div>
+        <div>
+          <div class="title">
+            <span class="typewriter" data-text="BBQ ORDERING SYSTEM (KIOSK)"
+              >BBQ ORDERING SYSTEM (KIOSK)</span
+            >
+          </div>
+
+          <div class="subtitle">“Ako ang uling, ikaw ang BBQ ng puso ko.”</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: center">
+        <div style="text-align: right">
+          <div style="font-weight: 800">WELCOME</div>
+          <div class="small-muted">Click It. Grill It. Love It.</div>
+        </div>
+        <div
+          style="
+            background: linear-gradient(180deg, var(--brand), #d62b1e);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 800;
+          "
+        >
+          Cart <span id="cart-count">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CATEGORY NAVIGATION -->
+
+    <nav id="category-nav">
+      <!-- Buttons injected by JS -->
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <!-- PRODUCTS AREA -->
+      <div class="products-area">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+          "
+        ></div>
+
+        <div id="product-grid" class="product-grid">
+          <!-- Product cards injected by JS -->
+        </div>
+      </div>
+
+      <!-- CART PANEL -->
+      <aside class="cart-panel">
+        <div class="cart">
+          <h3>
+            <span>Order List</span>
+            <span class="small-muted" id="order-count">0 items</span>
+          </h3>
+
+          <!-- Filter input -->
+          <div style="position: relative; margin-bottom: 8px; width: 100%">
+            <input
+              type="text"
+              id="order-filter"
+              placeholder="Filter orders by item..."
+              style="
+                padding: 6px 28px 6px 8px;
+                border-radius: 6px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                width: 100%;
+              "
+            />
+            <button
+              id="clear-filter"
+              style="
+                position: absolute;
+                right: 6px;
+                top: 50%;
+                transform: translateY(-50%);
+                border: none;
+                background: transparent;
+                font-weight: 800;
+                cursor: pointer;
+                font-size: 14px;
+                color: #938f8fd8;
+              "
+            >
+              ×
+            </button>
+          </div>
+
+          <!-- Order items injected here -->
+          <div id="order-list" class="order-list"></div>
+
+          <!-- Cart footer -->
+          <div class="cart-footer">
+            <div>
+              <div class="small-muted">Total</div>
+              <div class="total-amount" id="total-display">₱0</div>
+            </div>
+            <div class="controls">
+              <button class="btn-primary" onclick="openConfirm()">
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div id="confirm-modal" class="modal">
+      <div class="receipt">
+        <h2>CONFIRMATION SHEET</h2>
+        <div class="content">
+          <div class="receipt-left">
+            <h3 style="margin-top: 6px">Order List</h3>
+            <div
+              id="confirm-order-list"
+              style="margin-top: 8px; max-height: 300px; overflow-y: auto"
+            ></div>
+          </div>
+          <div class="receipt-right">
+            <h3 style="margin-top: 6px">Order Price</h3>
+            <div id="confirm-order-price" style="margin-top: 8px"></div>
+            <div style="margin-top: 12px; font-weight: 700">Total</div>
+            <div
+              id="confirm-order-total"
+              style="font-size: 18px; font-weight: 900; margin-top: 6px"
+            >
+              ₱0
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal actions -->
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-top: 18px;
+          "
+        >
+          <div>
+            <button class="btn-ghost" onclick="cancelAll()">Cancel</button>
+          </div>
+          <div>
+            <button class="btn-primary" onclick="finalizeOrder()">
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
